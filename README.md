@@ -34,14 +34,18 @@ $ ./module_test
 
 ### For Windows
 
-```
 > mkdir build
-> cd build
-> cmake ..
-> cmake --build .
-> .\Debug\module_test.exe
-```
 
-### References
+## Configure the build
+cmake -S . -B build
+
+## Build debug binaries
+cmake --build build --config Debug
+.\Debug\module_test.exe
+
+## Build release binaries
+cmake --build build --config Release
+> .\Release\module_test.exe
+
 
 - [import CMake; the Experiment is Over!](https://www.kitware.com/import-cmake-the-experiment-is-over/)
