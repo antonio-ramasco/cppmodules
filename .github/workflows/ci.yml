@@ -36,10 +36,10 @@ jobs:
       run: sudo wget https://github.com/ninja-build/ninja/releases/download/v1.11.1/ninja-linux.zip && sudo unzip ninja-linux.zip -d /usr/local/bin/
 
     - name: Configure CMake
-      run: CXX=clang++ CC=clang cmake -S . -B build -G Ninja
+      run: CXX=clang++-18 CC=clang cmake -S . -B build -G Ninja
 
     - name: Build
-      run: CXX=clang++ CC=clang cmake --build build
+      run: CXX=clang++-18 CC=clang cmake --build build
 
     - name: Test
       run: ./build/module_test
