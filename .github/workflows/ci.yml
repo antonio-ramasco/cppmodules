@@ -44,6 +44,18 @@ jobs:
     - name: Link Cmake binaries to their usual path
       run: sudo ln -sf /opt/cmake-3.28.1/bin/* /usr/local/bin/
 
+    - name: Emit clang++-18 version
+      run: clang++-18 --version
+
+    - name: Emit clang version
+      run: clang --version
+
+    - name: Emit cmake version
+      run: cmake --version
+
+    - name: Emit ninja version
+      run: ninja --version
+
     - name: Configure with CMake and Clang++-18
       run: CXX=clang++-18 CC=clang cmake -S . -B build -G Ninja
 
