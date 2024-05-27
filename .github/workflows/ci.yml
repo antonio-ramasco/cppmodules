@@ -32,6 +32,8 @@ jobs:
     - name: set clang 18 as default
       run: sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-18 100
 
+    - name: Update to ninja 1.11.1
+      run: sudo wget https://github.com/ninja-build/ninja/releases/download/v1.11.1/ninja-linux.zip && sudo unzip ninja-linux.zip -d /usr/local/bin/
 
     - name: Configure CMake
       run: cmake -S . -B build -G Ninja
