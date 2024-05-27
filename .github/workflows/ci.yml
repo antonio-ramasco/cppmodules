@@ -35,7 +35,16 @@ jobs:
     - name: Update to ninja 1.11.1
       run: sudo wget https://github.com/ninja-build/ninja/releases/download/v1.11.1/ninja-linux.zip && sudo unzip ninja-linux.zip -d /usr/local/bin/
 
-    - name: Configure CMake
+    - name: Download CMake 3.28.1
+      run: wget https://github.com/Kitware/CMake/releases/download/v3.28.1/cmake-3.28.1-linux-x86_64.sh && chmod +x cmake-3.28.1-linux-x86_64.sh
+
+    - name: Run the CMake install script
+      run: sudo mkdir /opt/cmake-3.28.1 && sudo ./cmake-3.28.1-linux-x86_64.sh --prefix=/opt/cmake-3.28.1 --skip-license
+
+    - name: Link Cmake binaries to their usual path
+      run: sudo ln -s /opt/cmake-3.28.1/bin/* /usr/local/bin/
+
+    - name: Configure with CMake and Clang++-18
       run: CXX=clang++-18 CC=clang cmake -S . -B build -G Ninja
 
     - name: Build
