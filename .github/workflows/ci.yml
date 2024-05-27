@@ -11,6 +11,9 @@ jobs:
     - name: Install dependencies
       run: sudo apt-get update && sudo apt-get install -y cmake ninja-build
 
+    - name: Update clang
+      run: sudo apt-get install clang-18
+
     - name: Configure CMake
       run: cmake -S . -B build -G Ninja
 
